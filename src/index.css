@@ -5,6 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   /* The image used */
+   background-image: url(http://localhost:3000/images/fondo.jpg) ;
+   /* Full height */
+   height: 100%;
+   /* Center and scale the image nicely */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
+   overflow: hidden;
 }
 
 code {

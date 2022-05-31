@@ -4,7 +4,7 @@ export const Navigation = () => {
 
     return(
         <>
-            <Navbar bg="primary" variant="dark">
+            <Navbar className="navbar navbar-dark bg-dark">
               <Navbar.Brand href="/home">Home</Navbar.Brand>
               <Nav className="mr-auto">
                 <Nav.Link href="/Promociones">Promociones</Nav.Link>

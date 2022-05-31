@@ -24,10 +24,8 @@ export const Home = () => {
         <>
         <Navigation ></Navigation>
           
-          <h1>
-            
-          </h1>
-          <Container fluid="md" >
+          <Container fluid="md">
+             
               <Row>  
                {platos.map((plato:plato) => 
                 <ItemPlato key={plato.id} id={plato.id} menu={plato.menu} precio={plato.precio} imagen={plato.imagen}></ItemPlato>

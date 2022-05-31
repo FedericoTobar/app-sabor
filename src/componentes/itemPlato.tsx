@@ -12,7 +12,7 @@ export const ItemPlato = (args: platoParams) => {
 
     return(
         <>
-            <Card style={{width: '18rem'}} className='margenesTarjeta'>
+            <Card style={{width: '18rem'}} >
                 <Card.Img variant="top" className='maxAltoImg' src={"http://localhost:3000/images/"+args.imagen.toLowerCase()}></Card.Img>
                 <Card.Body className='tarjPpal'>
                     <></>
