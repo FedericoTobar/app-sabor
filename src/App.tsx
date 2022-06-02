@@ -9,7 +9,7 @@ class App extends Component{
       <Routes>
         <Route path="/" element={<Home/>}/>
             <Route path="/detalle">
-            
+            HOLA DESDE RAMA VF
             </Route>
             <Route path="*" element={<Home/>}/>
       </Routes>
