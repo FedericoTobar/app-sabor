@@ -10,7 +10,7 @@ type ArticuloParams = {
     
 }
 
-export const ItemArticulo = (args: ArticuloParams) => {
+export const itemArticulo = (args: ArticuloParams) => {
 
     return (
         <>

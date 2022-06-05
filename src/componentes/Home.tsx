@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Alert, Button, Card, Container, Row } from 'react-bootstrap';
 import { getArticuloManufacturadoFetch, getArticuloManufacturadoXID } from './FuncionesApi';
-import { ItemArticulo }  from './ItemArticulo';
+import { itemArticulo }  from './ItemArticulo';
 import { Navigation } from './Navigation';
 import { useParams } from 'react-router-dom';
 import ArticulosManufacturados from './ArticulosManufacturados';
@@ -38,10 +38,10 @@ export const Home = () => {
              
               <Row>  
                {ArticuloManufacturado.map((ArticuloManufacturado:ArticulosManufacturados) => 
-                <ItemArticulo key={ArticuloManufacturado.id} id={ArticuloManufacturado.id} 
+                <itemArticulo key={ArticuloManufacturado.id} id={ArticuloManufacturado.id} 
                 denominacion={ArticuloManufacturado.denominacion} precio={ArticuloManufacturado.precio} 
                 imagen={ArticuloManufacturado.imagen} tiempoEstimado={ArticuloManufacturado.tiempoEstimado}>
-                </ItemArticulo>
+                </itemArticulo>
                )}
               </Row>
           </Container>
