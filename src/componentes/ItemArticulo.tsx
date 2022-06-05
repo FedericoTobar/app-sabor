@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Button, Card, Col, Container, Nav, Row } from 'react-bootstrap';
+
+import { Card } from 'react-bootstrap';
 
 type ArticuloParams = {
     id:number;
@@ -7,10 +7,10 @@ type ArticuloParams = {
     imagen:string;
     tiempoEstimado:string;
     precio:number;
-    
+    children: React.ReactNode;
 }
 
-export const itemArticulo = (args: ArticuloParams) => {
+export const ItemArticulo = (args: ArticuloParams) => {
 
     return (
         <>

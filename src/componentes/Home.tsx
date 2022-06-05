@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Alert, Button, Card, Container, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { getArticuloManufacturadoFetch, getArticuloManufacturadoXID } from './FuncionesApi';
-import { itemArticulo }  from './ItemArticulo';
+import { ItemArticulo }  from './ItemArticulo';
 import { Navigation } from './Navigation';
 import { useParams } from 'react-router-dom';
 import ArticulosManufacturados from './ArticulosManufacturados';
@@ -10,12 +10,12 @@ export const Home = () => {
 
   const {termino} = useParams();
 
-  const [ArticuloManufacturado, setArticuloManufacturado] = useState<ArticulosManufacturados[]>([]);
+  const [Articulo, setArticuloManufacturado] = useState<ArticulosManufacturados[]>([]);
     
     const getArticuloManufacturado = async () => {
       console.log("TERMINO" + termino);
       
-      if(termino && termino != ""){
+      if(termino && termino !== ""){
         let datos:ArticulosManufacturados[] = await getArticuloManufacturadoXID(termino);
         setArticuloManufacturado(datos);
       }else{
@@ -37,11 +37,10 @@ export const Home = () => {
           <Container fluid="md">
              
               <Row>  
-               {ArticuloManufacturado.map((ArticuloManufacturado:ArticulosManufacturados) => 
-                <itemArticulo key={ArticuloManufacturado.id} id={ArticuloManufacturado.id} 
-                denominacion={ArticuloManufacturado.denominacion} precio={ArticuloManufacturado.precio} 
-                imagen={ArticuloManufacturado.imagen} tiempoEstimado={ArticuloManufacturado.tiempoEstimado}>
-                </itemArticulo>
+               {Articulo.map((articulo:ArticulosManufacturados)=>
+               <ItemArticulo id={articulo.id} denominacion={articulo.denominacion}
+               imagen={articulo.imagen} precio={articulo.precio} tiempoEstimado={articulo.tiempoEstimado}>
+               </ItemArticulo>
                )}
               </Row>
           </Container>
