@@ -5,58 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-   /* The image used */
-   background-image: url(http://localhost:3000/images/fondo.jpg) ;
-   /* Full height */
-   height: 100%;
-   /* Center and scale the image nicely */
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   position: relative;
-   overflow: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.maxAltoImg{
-  max-height: 180px;
-}
-
-.margenesTarjeta{
-  margin: 3em;
-}
-
-.minAltoImg{
-  min-height: 300px;
-  max-height: 300px;
-  min-width: 400px;
-  max-width: 400px;
-}
-.center{
-  margin: auto;
-  width: 50%;
-  border: 3px solid rgb(3, 3, 248);
-  padding: 10px;
-}
-.center90{
-  margin: auto;
-  width: 90%;
-  padding: 10px;
-}
-.txtJustificado{
-  text-align: justify;
-}
-.mr-auto{
-  width: max-content;
-}
-.tarjPpal{
-  color:black;
-  background-color: rgb(247, 245, 245);
-  text-align: center;
-  border-radius: 1ch;
-  
 }
