@@ -1,25 +1,35 @@
 import { useEffect, useState } from 'react';
 import { Alert, Button, Card, Container, Row } from 'react-bootstrap';
-//import { DetalleInstrumento } from './DetalleInstrumento';
-import { getPlatoJSON, getPlatoXID } from './FuncionesApi';
-import { ItemPlato }  from './itemPlato';
+import { getArticuloManufacturadoFetch, getArticuloManufacturadoXID } from './FuncionesApi';
+import { ItemArticulo }  from './ItemArticulo';
 import { Navigation } from './Navigation';
-import plato from './platos';
+import { useParams } from 'react-router-dom';
+import ArticulosManufacturados from './ArticulosManufacturados';
 
 export const Home = () => {
+
+  const {termino} = useParams();
+
+  const [ArticuloManufacturado, setArticuloManufacturado] = useState<ArticulosManufacturados[]>([]);
     
-  const [platos, setPlatos] = useState<plato[]>([]);
-    
-    const getPlatosRest = () => {
-      let datos:plato[] = getPlatoJSON();
-      setPlatos(datos);
+    const getArticuloManufacturado = async () => {
+      console.log("TERMINO" + termino);
+      
+      if(termino && termino != ""){
+        let datos:ArticulosManufacturados[] = await getArticuloManufacturadoXID(termino);
+        setArticuloManufacturado(datos);
+      }else{
+        let datos:ArticulosManufacturados[] = await getArticuloManufacturadoFetch();
+        setArticuloManufacturado(datos);
+      }
     }
 
     useEffect(() => {
-      getPlatosRest();
+      getArticuloManufacturado();
     }, []);
 
     
+
     return (
         <>
         <Navigation ></Navigation>
@@ -27,11 +37,15 @@ export const Home = () => {
           <Container fluid="md">
              
               <Row>  
-               {platos.map((plato:plato) => 
-                <ItemPlato key={plato.id} id={plato.id} menu={plato.menu} precio={plato.precio} imagen={plato.imagen}></ItemPlato>
+               {ArticuloManufacturado.map((ArticuloManufacturado:ArticulosManufacturados) => 
+                <ItemArticulo key={ArticuloManufacturado.id} id={ArticuloManufacturado.id} 
+                denominacion={ArticuloManufacturado.denominacion} precio={ArticuloManufacturado.precio} 
+                imagen={ArticuloManufacturado.imagen} tiempoEstimado={ArticuloManufacturado.tiempoEstimado}>
+                </ItemArticulo>
                )}
               </Row>
           </Container>
         </>
     )
+
 }

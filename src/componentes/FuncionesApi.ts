@@ -1,43 +1,73 @@
-import plato from "./platos";
+import ArticulosManufacturados from "./ArticulosManufacturados";
 
-export function getPlatoJSON()
-{    
-    let datos:plato[]=[{
-        id:1,
-        menu:"Ensalada Completa",
-        imagen:"EnsaladaA.jpg",
-        precio: 800,
-    },
-    {    
-        id:2,
-        menu:"Baggette Salame",
-        imagen:"ffood4.jpg",
-        precio: 500,
-    }
+export async function getArticuloManufacturadoFetch(){
+	let urlServer = 'http://localhost:8080/api/instrumentos';
+	let response = await fetch(urlServer, {
+		method: 'GET',
+        headers: {
+			'Content-type': 'application/json',
+			'Access-Control-Allow-Origin':'*'
+		},
+        mode: 'cors'
+	});
+	console.log(response);
+	return await response.json();
+}
+
+export async function getArticuloManufacturadoXID(termino:String){
+	let urlServer = 'http://localhost:8080/api/buscar/'+termino;
+	let response = await fetch(urlServer, {
+		method: 'GET',
+        headers: {
+			'Content-type': 'application/json',
+			'Access-Control-Allow-Origin':'*'
+		},
+        mode: 'cors'
+	});
+	console.log(response);
+	return await response.json();
+}
+
+export async function getArticuloManufacturadoXIdFecth(id:number){
+	let urlServer = 'http://localhost:8080/api/instrumentosxid/'+id;
+	let response = await fetch(urlServer, {
+		method: 'GET',
+        headers: {
+			'Content-type': 'application/json',
+			'Access-Control-Allow-Origin':'*'
+		},
+        mode: 'cors'
+	});
+	return await response.json() as ArticulosManufacturados;
     
-    ];
-    return datos;
 }
 
-export function getPlatoXID(id:number){
-    let datos:plato = new plato();
-    if(id ===1){
-    datos = {
-        id:1,
-        menu:"Ensalada Completa",
-        imagen:"EnsaladaA.jpg",
-        precio: 800,
-    }
-    return datos;
-}else if(id===2){
-    datos = {
-        id:2,
-        menu:"Baggette Salame",
-        imagen:"ffood4.jpg",
-        precio: 500,
-    }
-    return datos;
-}else{
-    return datos;
+export async function BorraArticuloManufacturadoXId(id:number){
+	console.log("Eliminar Instrumento ID " + id);
+	let urlServer = 'http://localhost:8080/api/delete/'+id;
+	await fetch(urlServer, {
+		method: 'DELETE',
+        headers: {
+			'Content-type': 'application/json',
+			'Access-Control-Allow-Origin':'*'
+		},
+        mode: 'cors'
+	});
 }
-}
+
+
+export async function GuardaArticuloManufacturado(ArticulosManufacturado?: ArticulosManufacturados) {
+	let urlServer = 'http://localhost:8080/api/insert';
+	let method:string = "POST";
+	if(ArticulosManufacturado && ArticulosManufacturado.id > 0){
+		urlServer = 'http://localhost:8080/api/update';
+		method = "PUT";
+	}
+	await fetch(urlServer, {
+	  "method": method,
+	  "body": JSON.stringify(ArticulosManufacturado),
+	  "headers": {
+		"Content-Type": 'application/json'
+	  }
+	});
+  }
