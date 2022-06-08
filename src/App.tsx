@@ -2,6 +2,8 @@ import React, { Component, Suspense } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import {Home} from './componentes/Home';
 import './App.css';
+import { GrillaArticulos } from './componentes/Grilla';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component{
   render(){
@@ -9,7 +11,7 @@ class App extends Component{
       <Routes>
         <Route path="/" element={<Home/>}/>
             <Route path="/detalle">
-            
+            <Route path="/grilla" element={<GrillaArticulos/>}/>
             </Route>
             <Route path="*" element={<Home/>}/>
       </Routes>

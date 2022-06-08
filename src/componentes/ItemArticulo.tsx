@@ -15,7 +15,7 @@ export const ItemArticulo = (args: ArticuloParams) => {
     return (
         <>
             <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" className='maxAltoImg' src={"http://localhost:3000/images/" + args.imagen.toLowerCase()}></Card.Img>
+            <Card.Img variant="top" className='maxAltoImg' src={"http://localhost:3001/images/" + args.imagen.toLowerCase()}></Card.Img>
             <Card.Body className='tarjPpal'>
             <></>
             <Card.Title>{args.denominacion}</Card.Title>

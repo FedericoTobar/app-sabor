@@ -8,6 +8,7 @@ export const Navigation = () => {
               <Navbar.Brand href="/home">Home</Navbar.Brand>
               <Nav className="mr-auto">
                 <Nav.Link href="/Promociones">Promociones</Nav.Link>
+                <Nav.Link href="/Grilla?">Listado Platos</Nav.Link>
                 <Nav.Link href="/DondeEstamos?">Donde Estamos?</Nav.Link>
               </Nav>
               

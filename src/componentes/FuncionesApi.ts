@@ -1,21 +1,21 @@
 import ArticulosManufacturados from "./ArticulosManufacturados";
 
 export async function getArticuloManufacturadoFetch(){
-	let urlServer = 'http://localhost:8080/api/instrumentos';
+	let urlServer = 'http://localhost:3000/articulos';
 	let response = await fetch(urlServer, {
 		method: 'GET',
         headers: {
 			'Content-type': 'application/json',
 			'Access-Control-Allow-Origin':'*'
 		},
-        mode: 'cors'
+       
 	});
 	console.log(response);
 	return await response.json();
 }
 
 export async function getArticuloManufacturadoXID(termino:String){
-	let urlServer = 'http://localhost:8080/api/buscar/'+termino;
+	let urlServer = 'http://localhost:3000/articulos/'+termino;
 	let response = await fetch(urlServer, {
 		method: 'GET',
         headers: {
@@ -28,8 +28,8 @@ export async function getArticuloManufacturadoXID(termino:String){
 	return await response.json();
 }
 
-export async function getArticuloManufacturadoXIdFecth(id:number){
-	let urlServer = 'http://localhost:8080/api/instrumentosxid/'+id;
+export async function getArticuloManufacturadoXIdFetch(id:number){
+	let urlServer = 'http://localhost:3000/articulos/'+id;
 	let response = await fetch(urlServer, {
 		method: 'GET',
         headers: {
@@ -43,8 +43,8 @@ export async function getArticuloManufacturadoXIdFecth(id:number){
 }
 
 export async function BorraArticuloManufacturadoXId(id:number){
-	console.log("Eliminar Instrumento ID " + id);
-	let urlServer = 'http://localhost:8080/api/delete/'+id;
+	console.log("Eliminar Articulo ID " + id);
+	let urlServer = 'http://localhost:3000/delete/'+id;
 	await fetch(urlServer, {
 		method: 'DELETE',
         headers: {
@@ -57,10 +57,10 @@ export async function BorraArticuloManufacturadoXId(id:number){
 
 
 export async function GuardaArticuloManufacturado(ArticulosManufacturado?: ArticulosManufacturados) {
-	let urlServer = 'http://localhost:8080/api/insert';
+	let urlServer = 'http://localhost:3000/insert';
 	let method:string = "POST";
 	if(ArticulosManufacturado && ArticulosManufacturado.id > 0){
-		urlServer = 'http://localhost:8080/api/update';
+		urlServer = 'http://localhost:3000/update';
 		method = "PUT";
 	}
 	await fetch(urlServer, {
