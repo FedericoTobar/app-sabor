@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getArticuloManufacturadoXIdFetch, GuardaArticuloManufacturado } from './FuncionesApi';
 import { Navigation } from './Navigation';
 import ArticulosManufacturados from './ArticulosManufacturados';
+import ArticulosManufacturadosTransfer from "./ArticulosManufacturadoTransfer";
 
 
 export const Formulario = () => {
@@ -11,16 +12,16 @@ export const Formulario = () => {
     const navigate = useNavigate();
 
     const {idarticulo} = useParams();
-    const [Articulo, setArticulo] = useState<ArticulosManufacturados>(new ArticulosManufacturados());
+    const [Articulo, setArticulo] = useState<ArticulosManufacturadosTransfer>(new ArticulosManufacturadosTransfer());
     
    
     const getArticulo = async () => {
         if(Number(idarticulo) !== 0){
-            let ArticuloSelect:ArticulosManufacturados = await getArticuloManufacturadoXIdFetch(Number(idarticulo));
-            setArticulo(ArticuloSelect);
+            //let articuloSelect:ArticulosManufacturadosTransfer = await getArticuloManufacturadoXIdFetch(Number(idarticulo));
+            //setArticulo(ArticuloSelect);
         }else{
-            let ArticuloSelect:ArticulosManufacturados = new ArticulosManufacturados();
-            setArticulo(ArticuloSelect);
+            let articuloSelect:ArticulosManufacturadosTransfer = new ArticulosManufacturadosTransfer();
+            setArticulo(articuloSelect);
         }
     }
 
@@ -44,13 +45,18 @@ export const Formulario = () => {
                 <Form.Label>Nombre</Form.Label>
                 <Form.Control type="Text" placeholder="Ingrese el nombre del Articulo" defaultValue={Articulo?.denominacion} onChange={e => Articulo.denominacion = String(e.target.value)}/>
             </Form.Group>
+
             <Form.Group className="mb-3" controlId="formBasicPrecio">
                 <Form.Label>Precio</Form.Label>
-                <Form.Control type="Text" placeholder="Ingrese el precio" defaultValue={Articulo?.precio} onChange={e => Articulo.precio = Number(e.target.value)}/>
+                <Form.Control type="Text" placeholder="Ingrese el precio" defaultValue={Articulo?.precio.precioVenta} onChange={e => Articulo.precio.precioVenta = Number(e.target.value)}/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicRubro">
-                <Form.Label>Marca</Form.Label>
-                <Form.Control type="Text" placeholder="Ingrese el tiempo estimado de coccion" defaultValue={Articulo?.tiempoEstimado} onChange={e => Articulo.tiempoEstimado = String(e.target.value)}/>
+            <Form.Group className="mb-3" controlId="formBasicPrecioCosto">
+                <Form.Label>Precio</Form.Label>
+                <Form.Control type="Text" placeholder="Ingrese el precio costo" defaultValue={Articulo?.precio.precioCompra} onChange={e => Articulo.precio.precioCompra = Number(e.target.value)}/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicTiempoEstimadoCoccion">
+                <Form.Label>Tiempo Estimado De Coccion</Form.Label>
+                <Form.Control type="Text" placeholder="Ingrese el tiempo estimado de coccion" defaultValue={Articulo?.tiempoEstimadoCocina} onChange={e => Articulo.tiempoEstimadoCocina = Number(e.target.value)}/>
             </Form.Group>
             
             <Form.Group className="mb-3" controlId="formBasicImagenPath">

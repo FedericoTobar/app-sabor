@@ -10,7 +10,6 @@ export async function getArticuloManufacturadoFetch(){
 		},
        
 	});
-	console.log(response);
 	return await response.json();
 }
 
@@ -56,11 +55,11 @@ export async function BorraArticuloManufacturadoXId(id:number){
 }
 
 
-export async function GuardaArticuloManufacturado(ArticulosManufacturado?: ArticulosManufacturados) {
-	let urlServer = 'http://localhost:3000/insert';
+export async function GuardaArticuloManufacturado(ArticulosManufacturado?: any) {
+	let urlServer = 'http://localhost:3000/articulos';
 	let method:string = "POST";
 	if(ArticulosManufacturado && ArticulosManufacturado.id > 0){
-		urlServer = 'http://localhost:3000/update';
+		urlServer = 'http://localhost:3000/articulos/'+ ArticulosManufacturado.id;
 		method = "PUT";
 	}
 	await fetch(urlServer, {

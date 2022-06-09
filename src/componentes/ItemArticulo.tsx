@@ -5,7 +5,7 @@ type ArticuloParams = {
     id:number;
     denominacion:string;
     imagen:string;
-    tiempoEstimado:string;
+    tiempoEstimado:number;
     precio:number;
     children: React.ReactNode;
 }

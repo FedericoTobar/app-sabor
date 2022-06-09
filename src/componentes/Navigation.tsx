@@ -2,7 +2,7 @@ import { Button, ButtonToolbar, Form, FormControl, Nav, Navbar, NavbarBrand, Tab
 
 export const Navigation = () => {
 
-    return(
+    return (
         <>
             <Navbar className="navbar navbar-dark bg-dark">
               <Navbar.Brand href="/home">Home</Navbar.Brand>
