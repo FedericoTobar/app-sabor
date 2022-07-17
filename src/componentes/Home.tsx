@@ -32,7 +32,7 @@ export const Home = () => {
 
     return (
         <>
-        <Navigation ></Navigation>
+        <Navigation />
           
           <Container fluid="md">
              
